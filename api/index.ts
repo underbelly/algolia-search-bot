@@ -4,6 +4,7 @@ import { isFromSlack } from '../lib/verify'
 
 export default async (request: NowRequest, response: NowResponse) => {
   if(isFromSlack(request, response)){
+    try {
     const client = algoilasearch(process.env.ALGOLIA_SPACE!, process.env.ALGOLIA_TOKEN!)
     const index = client.initIndex('documents');
 
@@ -51,8 +52,12 @@ export default async (request: NowRequest, response: NowResponse) => {
     })
 
     response.status(200).json({ blocks })
+    }catch(error){
+      console.error(error)
+      response.status(400).send(`Bad Request`)
+    }
   }else{
-    response.status(400).send(`Bad Request`)
+    response.status(406).send("Invalid")
   }
 }
 
