@@ -2,17 +2,18 @@ import { NowRequest, NowResponse } from '@now/node'
 import * as crypto from 'crypto'
 import qs from 'qs'
 
-const slackSigningSecret = process.env.SLACK_SIGNING_SECRET!;
-
-export const isFromSlack = (req: NowRequest, res: NowResponse): Boolean => {
+export const isFromSlack = (req: NowRequest): Boolean => {
+  const slackSigningSecret = process.env.SLACK_SIGNING_TOKEN!;
   const slackSignature = String(req.headers['x-slack-signature']);
   const requestBody = qs.stringify(req.body, {format : 'RFC1738'});
   const timestamp = Number(req.headers['x-slack-request-timestamp']);
   const time = Math.floor(new Date().getTime()/1000);
   if (!timestamp || Math.abs(time - timestamp) > 300) {
+    console.log('Timestamp Error!')
     return false
   }
   if (!slackSigningSecret || !slackSignature) {
+    console.log('Signing Secret Error!')
     return false
   }
   let sigBasestring = 'v0:' + timestamp + ':' + requestBody;
@@ -27,6 +28,7 @@ export const isFromSlack = (req: NowRequest, res: NowResponse): Boolean => {
   ) {
     return true
   } else {
+    console.log(`Signatures Don't Match!`)
     return false
   }
 }

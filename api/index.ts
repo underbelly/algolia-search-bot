@@ -3,7 +3,7 @@ import algoilasearch from 'algoliasearch';
 import { isFromSlack } from '../lib/verify'
 
 export default async (request: NowRequest, response: NowResponse) => {
-  if(isFromSlack(request, response)){
+  if(isFromSlack(request)){
     try {
     const client = algoilasearch(process.env.ALGOLIA_SPACE!, process.env.ALGOLIA_TOKEN!)
     const index = client.initIndex('documents');
@@ -32,7 +32,7 @@ export default async (request: NowRequest, response: NowResponse) => {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: `*<https://wiki.underbelly.is/${h.url}|${h.title}>*\n>${content}`
+            text: `*<https://wiki.underbelly.is${h.url}|${h.title}>*\n>${content}`
           }
       })
       blocks.push({

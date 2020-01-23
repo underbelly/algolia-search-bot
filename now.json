@@ -4,19 +4,17 @@
   "version": 2,
   "functions": {
     "api/**": {
-      "memory": 3008
+      "memory": 256
     }
   },
   "rewrites": [
-    { "source": "/", "destination": "/api" }
+    { "source": "/search", "destination": "/api" }
   ],
-  "build": {
-    "env": {
-      "SLACK_SIGNING_TOKEN": "@slack_signing_token",
-      "SLACK_TOKEN": "@slack_wiki_search_token",
-      "ALGOLIA_SPACE": "@algolia_space",
-      "ALGOLIA_TOKEN": "@algolia_token",
-      "ALGOLIA_ADMIN_TOKEN": "@algolia_admin_token"
-    }
+  "env": {
+    "SLACK_SIGNING_TOKEN": "@slack_signing_token",
+    "SLACK_TOKEN": "@slack_wiki_search_token",
+    "ALGOLIA_SPACE": "@algolia_space",
+    "ALGOLIA_TOKEN": "@algolia_token",
+    "ALGOLIA_ADMIN_TOKEN": "@algolia_admin_token"
   }
 }
