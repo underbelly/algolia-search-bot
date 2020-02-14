@@ -48,15 +48,24 @@ export default async (request: NowRequest, response: NowResponse) => {
         });
       });
 
+      const elements = [
+        {
+          type: 'mrkdwn',
+          text: `Search Time: ${results.processingTimeMS}ms`,
+        },
+      ];
+
+      if (results.nbHits > 5) {
+        elements.unshift({
+          type: 'mrkdwn',
+          text: `<https://wiki.underbelly.is/search?q=${results.query}|See All Results>`,
+        });
+      }
+
       blocks.push({
         type: 'context',
         // @ts-ignore
-        elements: [
-          {
-            type: 'mrkdwn',
-            text: `Search Time: ${results.processingTimeMS}ms`,
-          },
-        ],
+        elements,
       });
 
       response.status(200).json({ blocks });
