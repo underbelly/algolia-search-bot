@@ -4,7 +4,7 @@ Algolia Search Bot
 Enables you to create a Slack `/slash` command that can search and returns
 results from an Algolia space.
 
-[![Deploy to Vercel](/button)](/import/project?template=https://github.com/underbelly/algolia-search-bot)
+[![Deploy to Vercel](https://vercel.com/button/)](https://vercel.com/import/project?template=https://github.com/underbelly/algolia-search-bot)
 
 1. Make sure to add the following ENV secrets to the Vercel dashboard.
 
