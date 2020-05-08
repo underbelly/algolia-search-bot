@@ -22,6 +22,7 @@
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "qs": "^6.9.1",
+    "slack-blockify-types": "^1.0.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.7.5"
   },

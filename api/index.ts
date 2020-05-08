@@ -1,6 +1,7 @@
 import { NowRequest, NowResponse } from '@now/node';
 import algoilasearch from 'algoliasearch';
 import { isFromSlack } from '../lib/verify';
+import { Block } from 'slack-blockify-types';
 
 export default async (request: NowRequest, response: NowResponse) => {
   if (isFromSlack(request)) {
@@ -18,7 +19,7 @@ export default async (request: NowRequest, response: NowResponse) => {
         hitsPerPage: 5,
       });
 
-      const blocks = [
+      const blocks: Block[] = [
         {
           type: 'section',
           text: {
@@ -40,7 +41,7 @@ export default async (request: NowRequest, response: NowResponse) => {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `*<https://wiki.underbelly.is${h.url}|${h.title}>*\n>${content}`,
+            text: `*<${process.env.HOST}${h.url}|${h.title}>*\n>${content}`,
           },
         });
         blocks.push({
@@ -58,7 +59,7 @@ export default async (request: NowRequest, response: NowResponse) => {
       if (results.nbHits > 5) {
         elements.unshift({
           type: 'mrkdwn',
-          text: `<https://wiki.underbelly.is/search?q=${results.query}|See All Results>`,
+          text: `<${process.env.HOST}/search?q=${results.query}|See All Results>`,
         });
       }
 

@@ -9,15 +9,5 @@
   },
   "rewrites": [
     { "source": "/search", "destination": "/api" }
-  ],
-  "redirects": [
-    { "source": "/", "destination": "https://underbelly.is"}
-  ],
-  "env": {
-    "SLACK_SIGNING_TOKEN": "@slack_signing_token",
-    "SLACK_TOKEN": "@slack_wiki_search_token",
-    "ALGOLIA_SPACE": "@algolia_space",
-    "ALGOLIA_TOKEN": "@algolia_token",
-    "ALGOLIA_ADMIN_TOKEN": "@algolia_admin_token"
-  }
+  ]
 }
