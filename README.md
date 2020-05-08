@@ -17,7 +17,10 @@ results from an Algolia space.
 
 2. Follow Slack [tutorial](https://api.slack.com/tutorials/your-first-slash-command) for creating a slack command.
 
-If you find ways of making this tool more useful please submit PRs!
+## Contributing
+
+We ❤ PRs!
+
 
 
 
