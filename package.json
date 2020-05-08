@@ -1,5 +1,5 @@
 {
-  "name": "wiki-search",
+  "name": "algolia-search-bot",
   "version": "1.0.0",
   "description": "Search the Underbelly Wiki",
   "scripts": {
@@ -16,7 +16,7 @@
     "@types/qs": "^6.9.0",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
-    "eslint": "6.6.0",
+    "eslint": "7.0.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "jest": "^26.0.1",
